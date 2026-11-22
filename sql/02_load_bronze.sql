@@ -1,0 +1,5 @@
+USE DATABASE TRAINING_MEDALLION_DB;
+
+USE SCHEMA Bronze;
+
+SHOW TABLES IN SCHEMA training_medallion_db.bronze;
