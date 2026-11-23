@@ -1,5 +1,3 @@
-
--- 01_environment_setup.sql
 -- Set up the Snowflake environment for the Medallion ETL pipeline
 
 USE ROLE ACCOUNTADMIN;
