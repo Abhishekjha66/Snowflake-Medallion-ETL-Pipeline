@@ -79,6 +79,7 @@ Both tasks were verified through task execution history.
 | `04_transform_gold.sql` | Gold aggregation logic |
 | `05_create_tasks.sql` | Scheduled task definitions |
 | `06_monitoring.sql` | Task execution monitoring |
+| `07_data_validation.sql` | Data quality and layer validation |
 
 ## Verified Pipeline Results
 
@@ -108,6 +109,7 @@ Both tasks were verified through task execution history.
 - Building aggregated reporting tables.
 - Automating ETL workflows using Snowflake Tasks.
 - Monitoring scheduled task execution.
+- Validating data across multiple pipeline layers.
 
 ## Project Status
 
