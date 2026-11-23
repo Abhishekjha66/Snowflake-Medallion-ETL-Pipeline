@@ -1,9 +1,8 @@
-
 # Snowflake Medallion ETL Pipeline
 
 An end-to-end data transformation project built using **Snowflake SQL** and the **Medallion Architecture (Bronze, Silver, Gold)**.
 
-The project demonstrates how raw sales data can be organized, cleaned, transformed, aggregated, and monitored through scheduled Snowflake tasks.
+This project demonstrates how raw sales data can be ingested, cleaned, transformed, aggregated, and monitored through scheduled Snowflake tasks.
 
 ## Architecture
 
@@ -43,16 +42,19 @@ The project demonstrates how raw sales data can be organized, cleaned, transform
 ## Data Pipeline
 
 ### 1. Bronze Layer
+
 Stores raw sales data in the `RAW_SALES` table.
 
 ### 2. Silver Layer
+
 Cleans and transforms raw data:
 - Trims customer and product values.
-- Filters invalid or null records.
+- Filters null and invalid records.
 - Removes duplicate sales records.
 - Retains the latest record for each sale ID.
 
 ### 3. Gold Layer
+
 Creates business-level sales summaries:
 - Total sales by product.
 - Total revenue.
@@ -65,26 +67,38 @@ The pipeline uses Snowflake Tasks:
 - `SILVER_DAILY_TASK` runs daily at **8:00 AM IST**.
 - `GOLD_DAILY_TASK` runs after the Silver task succeeds.
 
+Both tasks were verified through task execution history.
+
 ## SQL Scripts
 
 | File | Description |
 |---|---|
 | `01_environment_setup.sql` | Database, schemas, and warehouse setup |
-| `02_load_bronze.sql` | Bronze schema context and table inspection |
+| `02_bronze_table_setup.sql` | Bronze schema context and table inspection |
 | `03_transform_silver.sql` | Silver transformation logic |
 | `04_transform_gold.sql` | Gold aggregation logic |
 | `05_create_tasks.sql` | Scheduled task definitions |
 | `06_monitoring.sql` | Task execution monitoring |
 
-## Sample Gold Output
+## Verified Pipeline Results
+
+| Layer | Table | Verified records |
+|---|---|---:|
+| Bronze | `RAW_SALES` | 15 |
+| Silver | `CLEAN_SALES` | 12 |
+| Gold | `SALES_SUMMARY` | 5 product groups |
+
+### Gold Output
 
 | Product | Total Sales | Total Revenue |
 |---|---:|---:|
-| Laptop | 2 | 110000 |
-| Phone | 2 | 50000 |
-| Tablet | 1 | 18000 |
+| Keyboard | 1 | 3,000 |
+| Laptop | 4 | 220,000 |
+| Mouse | 1 | 1,200 |
+| Phone | 4 | 100,000 |
+| Tablet | 2 | 36,000 |
 
-*Sample results from the project dataset.*
+*Results from the verified project dataset.*
 
 ## Key Learning Outcomes
 
@@ -97,7 +111,7 @@ The pipeline uses Snowflake Tasks:
 
 ## Project Status
 
-The Bronze, Silver, and Gold tables were populated and verified. Scheduled task execution was also tested.
+The Bronze, Silver, and Gold tables were populated and verified. Scheduled task execution was also tested, with successful Silver and Gold task runs visible in execution history.
 
 ---
 
