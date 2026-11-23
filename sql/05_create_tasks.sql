@@ -1,5 +1,3 @@
-
--- 05_create_tasks.sql
 -- Create scheduled tasks for the Silver and Gold ETL pipeline
 
 USE DATABASE TRAINING_MEDALLION_DB;
