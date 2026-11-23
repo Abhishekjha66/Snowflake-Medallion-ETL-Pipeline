@@ -1,4 +1,3 @@
--- 04_transform_gold.sql
 -- Aggregate Silver sales data into Gold summary table
 
 CREATE OR REPLACE TABLE TRAINING_MEDALLION_DB.GOLD.SALES_SUMMARY AS
