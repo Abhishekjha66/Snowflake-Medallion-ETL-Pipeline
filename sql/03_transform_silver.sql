@@ -1,4 +1,3 @@
--- 03_transform_silver.sql
 -- Transform Bronze raw sales data into Silver clean sales data
 
 CREATE OR REPLACE TABLE TRAINING_MEDALLION_DB.SILVER.CLEAN_SALES AS
